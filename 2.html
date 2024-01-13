@@ -131,6 +131,22 @@
         #resetButton:hover {
             background-color: #EB711E;
         }
+
+       #reset{
+            margin-left: 85%;
+            margin-top: 10%;
+            margin-bottom: 0%;
+        }
+        #para{
+            padding: 10px;
+            margin-top: 10px;
+            text-align: left;
+            border-radius: 1px;
+            font-size: 20px;
+            font-weight: 200;
+            font-family:'Times New Roman', Times, serif;
+        }
+       
     </style>
 </head>
 
@@ -152,9 +168,15 @@
             <div class="dock"></div>
             <div class="dock"></div>
         </div>
+         <div id="para">
+            <p> <b>Try to finish in the less number of moves<br>
+                for n number of disks the best number of moves are (2^n)-1</b></p>
+        </div>
         <!-- Centered reset button below the docks -->
+        <div id="reset">
         <div class="reset-button-container">
             <button id="resetButton" onclick="resetGame()">Reset</button>
+        </div>
         </div>
     </div>
 
