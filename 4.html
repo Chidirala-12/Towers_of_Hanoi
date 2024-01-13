@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Tower of Hanoi</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            padding-top: 10px;
+            font-family: "Roboto", sans-serif;
+            color: #000000;
+            font-weight: 400;
+            background: linear-gradient(to right, #932180, #97BC3B, #EB711E);
+        }
+
+        .topnav {
+            overflow: hidden;
+            background-color: linear-gradient(to right, #932180, #97BC3B, #EB711E);
+            order: -1;
+        }
+
+        .topnav a {
+            float: left;
+            color: #f2f2f2;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-size: 17px;
+        }
+
+        .topnav a:hover {
+            background-color: black;
+            color: pink;
+        }
+
+        .topnav a.active {
+            color: white;
+        }
+
+        h1 {
+            font-size: 4rem;
+        }
+
+        h4 {
+            font-size: 2rem;
+        }
+
+        .row {
+            text-align: center;
+        }
+
+        .towers {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            position: absolute;
+            border-bottom: 6px solid black;
+            margin: 15px 0 0 -187px;
+            width: 500px;
+            height: 165px;
+            left: 50%;
+            top: 50%;
+        }
+
+        .dock {
+            cursor: pointer;
+            position: relative;
+            display: flex;
+            height: 100%;
+            width: 32%;
+            flex-direction: column;
+            justify-content: flex-end;
+        }
+
+        .dock::before {
+            content: "";
+            position: absolute;
+            width: 6px;
+            height: 100%;
+            background-color: black;
+            left: 50%;
+            margin-left: -3px;
+        }
+
+        .disk {
+            position: relative;
+            display: block;
+            height: 12px;
+            box-sizing: border-box;
+            bottom: 0px;
+        }
+
+        .disk-1 {
+            margin-left: 40%;
+            width: 20%;
+            background-color: #e93737;
+            border-radius: 5px;
+        }
+        .disk-2 {
+            margin-left: 32%;
+            width: 36%;
+            background-color: #1f3091;
+            border-radius: 5px;
+        }
+        .disk-3 {
+            margin-left: 24%;
+            width: 52%;
+            background-color: #f8e619;
+            border-radius: 5px;
+        }
+        .disk-4 {
+            margin-left: 16%;
+            width: 68%;
+            background-color: #2d8131;
+            border-radius: 5px;
+        }
+
+        .selected>div:first-of-type {
+            transform: translate(0, -100%);
+        }
+
+        /* Center the reset button */
+        .reset-button-container {
+            text-align: left;
+            margin-top: 20px;
+        }
+
+        #resetButton {
+            padding: 10px;
+            font-size: 16px;
+            background-color: black;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #resetButton:hover {
+            background-color: #EB711E;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="topnav">
+        <a class="active" href="mainmenu.html">Home</a>
+        <a href="log.html">Login</a>
+        <a href="mainmenu.html">About</a>
+    </div>
+    <div class="row">
+        <h1>Tower of Hanoi</h1>
+        <h4 id="score">0</h4>
+        <div class="towers">
+            <div class="dock">
+                <div class="disk disk-1" data-size="1"></div>
+                <div class="disk disk-2" data-size="2"></div>
+                <div class="disk disk-3" data-size="3"></div>
+                <div class="disk disk-4" data-size="4"></div>
+                
+            </div>
+            <div class="dock"></div>
+            <div class="dock"></div>
+        </div>
+        <!-- Centered reset button below the docks -->
+        <div class="reset-button-container">
+            <button id="resetButton" onclick="resetGame()">Reset</button>
+        </div>
+    </div>
+
+    <script>
+        let moves = 0;
+        let moveDisc = false;
+        let selectedDock = null;
+        let origDiv = null;
+
+        let scoreDiv = document.getElementById("score");
+
+        function getFirstDisc(div) {
+            return div.getElementsByTagName("div")[0];
+        }
+
+        function checkDiscSizes(divOne, divTwo) {
+            return getFirstDisc(divOne).dataset.size > divTwo.dataset.size;
+        }
+
+        function checkIfDisc(div) {
+            return div.getElementsByTagName("div").length === 0;
+        }
+
+        function toggleMoveType() {
+            moveDisc = !moveDisc;
+        }
+
+        function selectDock(div) {
+            selectedDock = getFirstDisc(div);
+            // Escapes event if a person clicks an empty div.
+            if (!selectedDock) return;
+            origDiv = div;
+            div.className += " selected";
+            toggleMoveType();
+        }
+
+        function moveToDock(div) {
+            if (checkIfDisc(div) || checkDiscSizes(div, selectedDock)) {
+                moves++;
+                div.insertBefore(selectedDock, div.firstChild);
+                scoreDiv.innerHTML = moves;
+            }
+            origDiv.classList.remove("selected");
+            toggleMoveType();
+        }
+
+        function handleClick(e) {
+            moveDisc ? moveToDock(this) : selectDock(this);
+        }
+
+        Array.from(document.getElementsByClassName("dock")).forEach((dock) => {
+            dock.addEventListener("click", handleClick);
+        });
+
+        // Add a function to reset the game
+        function resetGame() {
+            // Reload the current page
+            location.reload();
+        }
+    </script>
+</body>
+
+</html>

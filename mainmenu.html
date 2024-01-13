@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Template</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
+.w3-bar,h1,button {font-family: "Montserrat", sans-serif}
+/* Gradient Background */
+.w3-top {
+  background: linear-gradient(to right, #932180, #97BC3B, #EB711E);
+}
+
+.w3-container.w3-red,
+.w3-container.w3-white {
+  background: linear-gradient(to right, #932180, #97BC3B, #EB711E);
+}
+
+.w3-light-grey {
+  background: linear-gradient(to right, #932180, #97BC3B, #EB711E);
+}
+
+.w3-black {
+  background: linear-gradient(to right, #932180, #97BC3B, #EB711E);
+  color: white;
+}
+
+.w3-bar {
+  background: linear-gradient(to right, #932180, #97BC3B, #EB711E); /* Updated background color */
+  color: white;
+}
+
+.w3-text-black {
+  color: black;
+}
+
+/* Custom styles */
+.w3-logo {
+  max-width: 70%;
+  height: auto;
+  background-color: transparent; /* Remove white background */
+}
+
+.w3-second-grid {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.w3-second-grid-left {
+  flex: 1;
+}
+
+.w3-second-grid-right {
+  flex: 2;
+}
+
+/* Resizable image */
+.w3-grid-image {
+  max-width: 200%;
+  width: 200%; /* Adjust the width as needed */
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+</style>
+</head>
+<body>
+
+<!-- Navbar -->
+<div class="w3-top">
+  <div class="w3-bar w3-left-align w3-large">
+    <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-red" href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+    <a href="#" class="w3-bar-item w3-button w3-padding-large ">Home</a>
+    <a href="log.html" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Login</a>
+    <a href="log.html" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Create Account</a>
+    <a href="javascript:void(0);" onclick="scrollToAbout()" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">About</a>
+  </div>
+</div>
+
+<!-- Header -->
+<header class="w3-container w3-black w3-center" style="padding:128px 16px">
+  <h1 class="w3-jumbo w3-text-black">TOWERS OF HANOI</h1>
+  <h4 class="w3-xlarge w3-text-black">Have Fun</h4>
+  <h5 class="w3-xlarge w3-text-black">Read the instructions</h5>
+</header>
+
+<!-- First Grid -->
+<div id="about" class="w3-row-padding w3-padding-64 w3-container">
+  <div class="w3-content">
+    <div class="w3-twothird">
+      <h1>Towers of Hanoi</h1>
+      <h5 class="w3-padding-32">The Towers of Hanoi (also called The problem of Benares Temple or Tower of Brahma or Lucas' Tower and sometimes pluralized as Towers, or simply pyramid puzzle) is a mathematical game or puzzle consisting of three rods and a number of disks of various diameters, which can slide onto any rod. The puzzle begins with the disks stacked on one rod in order of decreasing size, the smallest at the top, thus approximating a conical shape. The objective of the puzzle is to move the entire stack to one of the other rods, obeying the following rules:</h5>
+
+      <p class="w3-text-black">Only one disk may be moved at a time.</p>
+      <p class="w3-text-black">Each move consists of taking the upper disk from one of the stacks and placing it on top of another stack or on an empty rod.</p>
+      <p class="w3-text-black">No disk may be placed on top of a disk that is smaller than it.</p>
+      <p class="w3-text-black">With three disks, the puzzle can be solved in seven moves. The minimal number of moves required to solve a Tower of Hanoi puzzle is 2n − 1, where n is the number of disks.</p>
+    </div>
+
+    <div class="w3-third w3-center">
+    <img src="tohpic.png" alt="Image" class="w3-grid-image"> 
+    </div>
+  </div>
+</div>
+
+<!-- Second Grid -->
+<div class="w3-row-padding w3-light-grey w3-padding-64 w3-container">
+  <div class="w3-content w3-second-grid">
+    <div class="w3-second-grid-left">
+      <img src="bvrit.png" alt="Logo" class="w3-logo">
+    </div>
+
+    <div class="w3-second-grid-right">
+      <h2>Done By:CSE DEPARTMENT</h2>
+      <h2>2nd YEAR STUDENTS</h2>
+      <h3 class="w3-text-black">BVRIT Narsapur</h3>
+    </div>
+  </div>
+</div>
+
+<!-- Quote of the day -->
+<div class="w3-container w3-black w3-center w3-opacity w3-padding-64">
+  <h1 class="w3-margin w3-xlarge w3-text-black">Quote of the day:"Man's mind, once stretched by a new idea, never regains its original dimensions."</h1>
+</div>
+
+<script>
+// Used to toggle the menu on small screens when clicking on the menu button
+function myFunction() {
+  var x = document.getElementById("navDemo");
+  if (x.className.indexOf("w3-show") == -1) {
+    x.className += " w3-show";
+  } else { 
+    x.className = x
+  }
+}
+
+// Scroll to the "About" section
+function scrollToAbout() {
+  var aboutSection = document.getElementById("about");
+  if (aboutSection) {
+    aboutSection.scrollIntoView({ behavior: 'smooth' });
+  }
+}
+</script>
+
+</body>
+</html>
